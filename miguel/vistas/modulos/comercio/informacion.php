@@ -1,0 +1,5 @@
+<?php
+
+$comercio = ControladorComercio::ctrSeleccionarComercio();
+
+?>

@@ -1,0 +1,6 @@
+<?php
+
+$plantilla = ControladorComercio::ctrSeleccionarPlantilla();
+
+
+?>

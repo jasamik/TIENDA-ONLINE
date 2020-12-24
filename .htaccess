@@ -1,0 +1,21 @@
+# Impedir que se pueda ver el listado de contenidos de un directorio
+Options All -Indexes
+
+# Url Amigables
+RewriteRule ^([-a-zA-Z0-9ñÑ_/]+)$ index.php?ruta=$1
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^aquariadepot\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.aquariadepot\.com$
+RewriteCond %{HTTPS} !on
+RewriteRule ^(.*)$ https://aquariadepot.com/$1 [R=301,L,NE]
+
+# Force HTTPS
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+<FilesMatch ".(ttf|otf|eot|woff|woff2)$">
+<IfModule mod_headers.c>
+Allow from all
+Header set Access-Control-Allow-Origin "https://www.aquariadepot.com"
+</IfModule>
+</FilesMatch>
